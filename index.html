@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untitled Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="top-bar">
+        
+        <div class="search-container">
+            <div class="search-bar">
+                <div class="search-img"><img src="photos/magnifying-glass.png"/></div>
+                <div class="search-box"><input type="text" id="searchInput" placeholder="Search.."></div>
+            </div>
+
+            <div  id="filterButton" onclick="toggleFilter()"><img src="photos/filter.png"/></div>
+            <div class="categories">
+                <p data-filter="all">All</p>
+                <p data-filter="looking">Looking for services</p>
+             <p data-filter="offering">Offering services</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="bottom-bar">
+        <div class="explore-tab tablink" onclick="openTab( event, 'explore')"><img src="photos/direction.png"/></div>
+        <div class="booked-tab tablink" onclick="openTab( event, 'booked')"><img src="photos/wall-clock.png"/></div>
+        <div class="create-tab tablink" onclick="openTab( event, 'create')"><img src="photos/add.png"/></div>
+        <div class="inbox-tab tablink" onclick="openTab( event, 'inbox')"><img src="photos/inbox.png"/></div>
+        <div class="profile-tab tablink" onclick="openTab( event, 'profile')"><img src="photos/account.png"/></div>
+    </div>
+
+    <div id="explore" class="tabcontent">
+        <div class="title">Explore</div>
+        <div class="explore-table">
+            <div class="explore-item" data-type="looking">
+                <div class="explore-image"><img src="photos/dog.jpg"/></div>
+                <div class="explore-title"><span class="lf">Looking for</span> dogsitter! Urgent!</div>
+                <div class="explore-description">50$ per day, from Monday to Wednesday</div>
+            </div>
+
+            <div class="explore-item" data-type="offering">
+                <div class="explore-image"><img src="photos/gardener.jpg"/></div>
+                <div class="explore-title"><span class="offering">Offering</span> gardening services, lawnmowing, heavy lifting</div>
+                <div class="explore-description">From sunday to friday any time, staring at 20$ per day</div>
+            </div>
+
+            <div class="explore-item" data-type="offering">
+                <div class="explore-image"><img src="photos/babysitter.jpg"/></div>
+                <div class="explore-title"><span class="offering">Offering</span> babysitting services</div>
+                <div class="explore-description">Any time, 7$ per hour</div>
+            </div>
+
+            <div class="explore-item" data-type="looking">
+                <div class="explore-image"><img src="photos/messyhouse.jpg"/></div>
+                <div class="explore-title"><span class="lf">Looking for</span> someone to clean messy house</div>
+                <div class="explore-description">This sunday, please, my kids made a mess and I don't have time to clean because of work!</div>
+            </div>
+
+            <div class="explore-item" data-type="offering">
+                <div class="explore-image"><img src="photos/flowers.jpg"/></div>
+                <div class="explore-title"><span class="offering">Offering</span> flower arrangement services</div>
+                <div class="explore-description">Any time, 21$ for each bouquet! Vast experience!</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="booked" class="tabcontent">
+        <div class="title">Reservations</div>
+        <div class="history-button">View history</div>
+        <div class="reservation-table">
+            <div class="reservation">
+                <div class="reservation-title">Dogwalking for Ana Pop</div>
+                <div class="reservation-description">50$, Monday 15:30-16:30</div>
+            </div>
+
+            <div class="reservation">
+                <div class="reservation-title">Cleaning by Andrei Marc</div>
+                <div class="reservation-description">25$, Sunday 15:30-17:30</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="create" class="tabcontent">
+        <div class="title">It's easy to get started on IAI</div>
+        <div class="create-menu">
+
+            <div class="menu-title">1. Tell us about your service or request</div>
+            <div class="menu-description"> Share some basic info, like what you need help with or offer your help with.</div>
+            <div class="border"></div>
+            <div class="menu-title">2. Make it stand out</div>
+            <div class="menu-description"> Add a little description and some photos-we'll help you out.</div>
+            <div class="border"></div>
+            <div class="menu-title">3. Finish up and publish</div>
+            <div class="menu-description">Set a starting price, a time interval, and publish your listing.</div>
+
+            <div class="get-started">Get started</div>
+        </div>
+    </div>
+
+    <div id="inbox" class="tabcontent">
+        <div class="title">Inbox</div>
+        <div class="message-box">You currently have no new messages.</div>
+    </div>
+
+    <div id="profile" class="tabcontent">
+        <div class="title">Profile</div>
+
+        <div class="view-profile">View profile</div>
+
+        <div class="settings-menu">
+            <div class="settings-title">Settings</div>
+            <div class="setting">Personal information <img src="photos/right-arrow.png"/></div>
+            <div class="setting">Login & security <img src="photos/right-arrow.png"/></div>
+            <div class="setting">Payments and payouts <img src="photos/right-arrow.png"/></div>
+            <div class="setting">Translation <img src="photos/right-arrow.png"/></div>
+        </div>
+
+        <div class="legal-menu">
+            <div class="legal-title">Legal</div>
+            <div class="legal">Terms of service <img src="photos/right-arrow.png"/></div>
+            <div class="legal">Privacy Policy <img src="photos/right-arrow.png"/></div>
+        </div>
+
+        <div class="logout-button">Log out</div>
+    </div>
+</body>
+
+<script>
+    function openTab(evt, tabName) {
+  // Declare all variables
+  var i, tabcontent, tablink;
+
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+
+  // Get all elements with class="tablink" and remove the class "active"
+  tablink = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablink.length; i++) {
+    tablink[i].className = tablink[i].className.replace(" active", "");
+  }
+
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(tabName).style.display = "block";
+  
+  evt.currentTarget.className += " active";
+} 
+
+
+function toggleFilter() {
+    const categories = document.querySelector('.categories');
+    categories.classList.toggle('active-select');
+    // Call the filter function when the filter button is clicked
+    filterItemsAndSearch(); 
+}
+
+    function filterItemsAndSearch() {
+        const searchInput = document.getElementById('searchInput').value.trim().toLowerCase();
+        const selectedFilter = document.querySelector('.categories .active').dataset.filter;
+        const container = document.getElementById('explore');
+        const items = container.getElementsByClassName('explore-item');
+
+        for (let item of items) {
+            const title = item.querySelector('.explore-title').innerText.toLowerCase();
+            const description = item.querySelector('.explore-description').innerText.toLowerCase();
+            const type = item.dataset.type;
+
+            const matchesSearch = title.includes(searchInput) || description.includes(searchInput);
+            const matchesFilter = selectedFilter === 'all' || type === selectedFilter;
+
+            // Show the item if it matches the search or filter, or if the search input is empty
+            if (matchesSearch && matchesFilter || searchInput === '') {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        }
+    }
+
+    document.getElementById('searchInput').addEventListener('input', filterItemsAndSearch);
+
+    const categoryButtons = document.querySelectorAll('.categories p');
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Toggle active class for category buttons
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            // Filter items based on the selected category
+            filterItemsAndSearch();
+            
+            // Hide dropdown after selecting a category
+            document.querySelector('.categories').classList.remove('active-select');
+        });
+    });
+
+    // Add event listener for the Enter key press on the search input
+    document.getElementById('searchInput').addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            filterItemsAndSearch();
+        }
+    });
+</script>
+</html>
